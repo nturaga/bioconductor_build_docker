@@ -31,3 +31,12 @@ R CMD check <package_name_x.y.z.tar.gz>
 ```
 
 It is also easy to run the library `BiocCheck` on packages as needed.
+
+## Availability
+
+The image is available at `nitesh1989/bioconductor_build_docker:devel` 
+
+```
+docker pull nitesh1989/bioconductor_build_docker:devel
+```
+
