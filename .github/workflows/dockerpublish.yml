@@ -8,14 +8,14 @@ on:
 
     # Publish `v1.2.3` tags as releases.
     tags:
-      - v*
+      - v3.11.0
 
   # Run tests for any PRs.
   pull_request:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: bioconductor_build_docker:devel
+  IMAGE_NAME: bioconductor_build_docker
 
 jobs:
   # Run tests.
