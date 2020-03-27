@@ -22,4 +22,4 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: sh $GITHUB_WORKSPACE/bioconductor_build_docker/.scripts/hello_world_test.sh
+      run: sh .scripts/hello_world_test.sh
