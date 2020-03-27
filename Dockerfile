@@ -22,3 +22,5 @@ LABEL name="bioconductor/bioconductor_docker" \
 ## 	&& rm -rf /var/lib/apt/lists/*
 
 ## RUN R -e 'BiocManager::install("BiocStyle")'
+
+CMD ["sh"]
