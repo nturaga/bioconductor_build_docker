@@ -27,7 +27,8 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-	DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: sh .scripts/hello_world_test.sh
+      env: 
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    
