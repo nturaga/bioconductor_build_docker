@@ -1,4 +1,4 @@
-echo "Hello Github actions"
+echo "Build bioconductor_docker image"
 
 ## Rocker repo
 ROCKER_REPO=https://github.com/rocker-org/rocker-versioned
@@ -10,9 +10,9 @@ HERE=`pwd`
 echo $HERE
 
 ## git clone rocker and bioc repo
-git clone $ROCKER_REPO
+git clone --depth 1 $ROCKER_REPO
 
-git clone $BIOCONDUCTOR_REPO
+git clone --depth 1 $BIOCONDUCTOR_REPO
 
 ## docker build rocker repo
 
@@ -29,7 +29,7 @@ docker build -t rocker/rstudio:devel -f  devel.Dockerfile .
 cd $GITHUB_WORKSPACE; cd bioconductor_docker
 echo "*** Building bioconductor/bioconductor_docker *** \n"
 
-docker build -t nitesh1989/bioconducotor_docker:devel .
+docker build -t nitesh1989/bioconductor_docker:devel .
 
 docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
 
