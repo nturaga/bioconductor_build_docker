@@ -31,4 +31,8 @@ echo "*** Building bioconductor/bioconductor_docker *** \n"
 
 docker build -t nitesh1989/bioconducotor_docker:devel .
 
+docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
+
+docker push nitesh1989/bioconductor_docker:devel
+
 cd $HERE
