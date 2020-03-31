@@ -28,3 +28,10 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: sh .scripts/hello_world_test.sh
+
+    - uses: mr-smithers-excellent/docker-build-push@v2
+      with:
+        image: nitesh1989/bioconductor_docker:devel
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}

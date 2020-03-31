@@ -29,6 +29,6 @@ docker build -t rocker/rstudio:devel -f  devel.Dockerfile .
 cd $GITHUB_WORKSPACE; cd bioconductor_docker
 echo "*** Building bioconductor/bioconductor_docker *** \n"
 
-docker build -t bioconductor/bioconducotor_docker:devel .
+docker build -t nitesh1989/bioconducotor_docker:devel .
 
 cd $HERE
