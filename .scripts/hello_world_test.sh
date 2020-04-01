@@ -5,7 +5,8 @@ echo "Build bioconductor_docker image"
 ## Step 0: Set up variables and clone
 ## Rocker repo
 ROCKER_REPO=https://github.com/rocker-org/rocker-versioned
-BIOCONDUCTOR_REPO=https://github.com/bioconductor/bioconductor_docker
+BIOCONDUCTOR_REPO=https://nturaga:$BIOC_GITHUB_ACCESS_TOKEN@github.com/nturaga/bioconductor_docker.git
+
 HERE=`pwd`
 
 ## git clone rocker and bioc repo
@@ -37,8 +38,16 @@ echo "*** Building bioconductor/bioconductor_docker *** \n"
 ## increment version number with awk
 awk -F . '/^ARG /{$NF++; OFS="."} {print}'  Dockerfile > tmp && mv -f tmp Dockerfile
 
-head Dockerfile
 
+## Git login
+git config user.email "nitesh.turaga@gmail.com"
+git config user.name "nturaga"
+
+## Git commit and push
+git commit -am "Weekly version bump and rebuild of bioconductor_docker:devel"
+git push
+
+## docker build, login and push
 docker build -t nitesh1989/bioconductor_docker:devel .
 
 docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
