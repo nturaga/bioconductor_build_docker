@@ -1,7 +1,7 @@
 # This docker image has LaTeX to build the vignettes
 FROM bioconductor/bioconductor_docker:devel
 
-ARG BIOCONDUCTOR_DOCKER_VERSION=3.10.2
+ARG BIOCONDUCTOR_DOCKER_VERSION=3.10.3 
 
 LABEL name="bioconductor/bioconductor_docker" \
       version=$BIOCONDUCTOR_DOCKER_VERSION \
