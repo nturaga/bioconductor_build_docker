@@ -37,6 +37,8 @@ echo "*** Building bioconductor/bioconductor_docker *** \n"
 ## increment version number with awk
 awk -F . '/^ARG /{$NF++; OFS="."} {print}'  Dockerfile > tmp && mv -f tmp Dockerfile
 
+head Dockerfile
+
 docker build -t nitesh1989/bioconductor_docker:devel .
 
 docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
