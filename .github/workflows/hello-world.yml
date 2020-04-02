@@ -6,7 +6,7 @@ name: bioconductor-docker-build
 # events but only for the master branch
 on:
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: '5 * * * *'
 
 # weekly
 # on:

@@ -18,7 +18,7 @@ git clone --depth 1 $BIOCONDUCTOR_REPO
 
 cd rocker-versioned/r-ver/
 
-docker build -t rocker/r-ver:devel -f  devel.Dockerfile .
+echo "docker build -t rocker/r-ver:devel -f  devel.Dockerfile ."
 
 ###############################################
 ## 2. docker build rocker rstudio:devel
@@ -27,7 +27,7 @@ cd $GITHUB_WORKSPACE; cd rocker-versioned/rstudio
 
 echo "*** Building rocker/rstudio *** \n"
 
-docker build -t rocker/rstudio:devel -f  devel.Dockerfile .
+echo "docker build -t rocker/rstudio:devel -f  devel.Dockerfile ."
 
 ###############################################
 ## 3. docker build bioconductor_docker:devel
@@ -44,14 +44,19 @@ git config user.name "nturaga"
 
 ## Git commit and push
 git commit -am "Weekly version bump and rebuild of bioconductor_docker:devel"
+
+git remote -v
+
+echo "Trying to push to github"
+
 git push
 
 ## docker build, login and push
-docker build -t nitesh1989/bioconductor_docker:devel .
+echo "docker build -t nitesh1989/bioconductor_docker:devel ."
 
-docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
+echo "docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD"
 
-docker push nitesh1989/bioconductor_docker:devel
+echo "docker push nitesh1989/bioconductor_docker:devel"
 
 ## Finish
 echo "Done"
