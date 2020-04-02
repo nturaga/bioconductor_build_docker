@@ -31,4 +31,4 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        BIOC_GITHUB_ACTION_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BIOC_GITHUB_ACTION_TOKEN: ${{ secrets.PAT }}
