@@ -35,14 +35,14 @@ echo "docker build -t rocker/rstudio:devel -f  devel.Dockerfile ."
 cd $GITHUB_WORKSPACE; cd bioconductor_docker
 echo "*** Building bioconductor/bioconductor_docker *** \n"
 
-git remote set-url origin $BIOCONDUCTOR_REPO
-
 ## increment version number with sed
 sed -r -i 's/(^ARG BIOCONDUCTOR_DOCKER_VERSION=[0-9]+\.[0-9]+\.)([0-9]+)$/echo "\1$((\2+1))"/ge' Dockerfile
 
 ## Git login
 git config user.email "nitesh.turaga@gmail.com"
 git config user.name "nturaga"
+
+git remote set-url origin $BIOCONDUCTOR_REPO
 
 ## Git commit and push
 git commit -am "Weekly version bump and rebuild of bioconductor_docker:devel"
