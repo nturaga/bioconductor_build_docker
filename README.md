@@ -2,8 +2,6 @@
 
 This image has the full installation of LaTeX.
 
-The image size is 5.3GB.
-
 ## Usage
 
 To use this image interactively,
@@ -13,7 +11,7 @@ docker run -it \
 	-v ~/shared/devel/library-store/:/usr/local/lib/R/host-site-library 
 	-v ~/Documents/:/home/bioc/Documents 
 	--user bioc 
-	bioconductor/bioconductor_build_docker:devel bash
+	ghcr.io/nturaga/bioconductor_build_docker:master bash
 ```
 
 This command will mount a `library-store` path, where all the
@@ -34,9 +32,9 @@ It is also easy to run the library `BiocCheck` on packages as needed.
 
 ## Availability
 
-The image is available at `nitesh1989/bioconductor_build_docker:devel` 
+The image is available at `ghcr.io/nturaga/bioconductor_build_docker:master`
 
 ```
-docker pull nitesh1989/bioconductor_build_docker:devel
+docker pull ghcr.io/nturaga/bioconductor_build_docker:master
 ```
 
