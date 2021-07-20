@@ -4,13 +4,25 @@ This image has the full installation of LaTeX.
 
 ## Usage
 
+Clone the repo, and then run,
+
+```
+## To start
+docker-compose up -d
+
+## To stop
+docker-compose down
+```
+
+
 To use this image interactively,
 
 ```
+mkdir -p ~/shared/devel/library-store/
+
 docker run -it \
 	-v ~/shared/devel/library-store/:/usr/local/lib/R/host-site-library 
 	-v ~/Documents/:/home/bioc/Documents 
-	--user bioc 
 	ghcr.io/nturaga/bioconductor_build_docker:master bash
 ```
 
