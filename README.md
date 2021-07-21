@@ -1,5 +1,7 @@
 # Linux Build Docker container for Bioconductor
 
+[![Docker](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
+
 This image has the full installation of LaTeX.
 
 ## Usage
