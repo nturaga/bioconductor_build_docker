@@ -20,4 +20,3 @@ RUN apt-get update \
 
 RUN R -e 'BiocManager::install(c("BiocStyle", "devtools"))'
 
-CMD ["sh"]
