@@ -3,8 +3,8 @@ FROM bioconductor/bioconductor_docker:devel
 
 LABEL name="nturaga/bioconductor_build_docker" \
       maintainer="nturaga.bioc@gmail.com" \
-	  version="3.14.0" \
-	  description="Bioconductor docker image for the linux build machine"
+      version="3.14.0" \
+      description="Bioconductor docker image for the linux build machine"
 
 # Update apt-get
 RUN apt-get update \
