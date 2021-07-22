@@ -38,4 +38,3 @@ jobs:
         run: |
           devtools::install('SummarizedExperiment', build=TRUE, build_vignettes=TRUE, upgrade=TRUE, quiet=TRUE) 
         shell: Rscript {0}
-{"mode":"full","isActive":false}
