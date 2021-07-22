@@ -9,3 +9,4 @@ services:
       - PASSWORD=bioc
     volumes:
       - ${HOME}/R/bioconductor_docker/3.14:/usr/local/lib/R/host-site-library
+      - ${HOME}/R/bioconductor_docker/data:/home/rstudio

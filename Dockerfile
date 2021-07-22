@@ -2,7 +2,9 @@
 FROM bioconductor/bioconductor_docker:devel
 
 LABEL name="nturaga/bioconductor_build_docker" \
-      maintainer="nitesh.turaga@gmail.com"
+      maintainer="nturaga.bioc@gmail.com" \
+	  version="3.14.0" \
+	  description="Bioconductor docker image for the linux build machine"
 
 # Update apt-get
 RUN apt-get update \
@@ -15,8 +17,10 @@ RUN apt-get update \
  	texlive-science \
  	texi2html \
  	texinfo \
+	qpdf \
  	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN R -e 'BiocManager::install(c("BiocStyle", "devtools"))'
+# Required packages, so these are latest no matter what
+RUN R -e 'BiocManager::install(c("BiocStyle", "devtools", "BiocCheck", "roxygen2", "testthat", "knitr"))'
 

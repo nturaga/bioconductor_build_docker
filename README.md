@@ -1,48 +1,10 @@
 # Linux Build Docker container for Bioconductor
 
+Author: Nitesh Turaga
+
 [![Docker](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
 
 This image has the full installation of LaTeX.
-
-## Usage
-
-Clone the repo, and then run,
-
-```
-## To start
-docker-compose up -d
-
-## To stop
-docker-compose down
-```
-
-
-To use this image interactively,
-
-```
-mkdir -p ~/shared/devel/library-store/
-
-docker run -it \
-	-v ~/shared/devel/library-store/:/usr/local/lib/R/host-site-library 
-	-v ~/Documents/:/home/bioc/Documents 
-	ghcr.io/nturaga/bioconductor_build_docker:master bash
-```
-
-This command will mount a `library-store` path, where all the
-installed packages will be shared. It will also mount a folder called
-`Documents` which has my required files and folders to work on using R
-/ RStudio. The user will be `bioc`. The entrypoint for the container
-will be a `bash` shell.
-
-It is possible to run,
-
-```
-R CMD build <package_name>
-
-R CMD check <package_name_x.y.z.tar.gz>
-```
-
-It is also easy to run the library `BiocCheck` on packages as needed.
 
 ## Availability
 
@@ -52,3 +14,69 @@ The image is available at `ghcr.io/nturaga/bioconductor_build_docker:master`
 docker pull ghcr.io/nturaga/bioconductor_build_docker:master
 ```
 
+## Usage - with Docker Compose
+
+Clone the repo, and within the directory run the command to start RStudio served at http://localhost:8787/
+
+```
+## To start the image and RStudio 
+docker-compose up -d
+```
+
+You can also get access to a `root` user to install ubuntu libraries. If a package is missing a 
+library that you need to install as a system requirement, you can log in as root user and install
+the library.
+
+```
+docker exec -it bioc-3.14 bash
+```
+
+While installing the library, be sure to use `apt-get update && apt-get install <package_name>`
+
+It is possible to run within the RStudio terminal window.
+
+```
+R CMD build <package_name>
+
+R CMD check <package_name_x.y.z.tar.gz>
+```
+
+## FAQ 
+
+1. Cannot open vignette with `browseVignettes('SummarizedExperiment')` in a new window. The URL that it 
+   tries to open is 
+
+		http://localhost:8787/library/SummarizedExperiment/doc/SummarizedExperiment.html
+
+	This is because RStudio serves this under a different link, i.e it prefixes the 'help/' 
+	before the 'library/' in the URL. (because it wants to open it under the 'Help' pane within RStudio)
+
+	Please try, (notice the URL '/help/library/')
+
+		http://localhost:8787/help/library/SummarizedExperiment/doc/SummarizedExperiment.html
+
+2. Interactive Use (not recommended)
+
+You can also use this image interactively as the 'root' user. If the volumes shared don't exist, the image will not work as expected.
+
+```
+# First create volumes to share with Docker image.
+mkdir -p $HOME/R/bioconductor_docker/3.14
+mkdir -p $HOME/R/bioconductor_docker/data
+
+# Use the docker image interactively if you need to as 'root'.
+docker run -it \
+	-v ${HOME}/R/bioconductor_docker/3.14:/usr/local/lib/R/host-site-library
+    -v ${HOME}/R/bioconductor_docker/data:/home/rstudio
+	ghcr.io/nturaga/bioconductor_build_docker:master bash
+```
+
+This command will mount a library-store path called `$HOME/R/bioconductor_docker/3.14`, 
+where all the installed packages will be shared. It will also mount a folder called
+`$HOME/R/bioconductor_docker/data` which has data, required files etc you wish to share. 
+It is also going to start the user within a 'bash' session, on the terminal.
+
+
+## Issues
+
+This is an experimental repository. Please open issues in the issues tab.
