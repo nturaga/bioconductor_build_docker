@@ -1,0 +1,41 @@
+name: SummarizedExperiment-buildVignette-BiocCheck-test
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Docker Build and Publish on ghcr.io"]
+    types:
+      - completed
+  schedule:
+    - cron: '* */6 * * *'
+
+jobs:
+  test-built-containers:
+    strategy:
+      matrix:
+        container-tag: [master]
+    runs-on: ubuntu-latest
+    container: ghcr.io/nturaga/bioconductor_build_docker:${{ matrix.container-tag }}
+
+    steps:
+      - name: report linux packages installed
+        run: 'apt list --installed'
+      - name: Check gert package and libgit2 functionality
+        # checks for presence of libgit2, also
+        run: |
+          BiocManager::install(c('gert', 'airway'))
+          require('gert')
+        shell: Rscript {0}
+      - name: Check if gert can clone a package
+        run: |
+          gert::git_clone('https://git.bioconductor.org/packages/SummarizedExperiment')
+        shell: Rscript {0}
+      - name: Check if devtools can build a package, this will build vignette
+        run: |
+          res <- devtools::build('SummarizedExperiment'); BiocCheck::BiocCheck(res)
+        shell: Rscript {0}
+      - name: Check if devtools can install a package, also build vignette
+        run: |
+          devtools::install('SummarizedExperiment', build=TRUE, build_vignettes=TRUE, upgrade=TRUE, quiet=TRUE) 
+        shell: Rscript {0}
+{"mode":"full","isActive":false}
