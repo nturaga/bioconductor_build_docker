@@ -23,7 +23,7 @@ jobs:
       - name: Check gert package and libgit2 functionality
         # checks for presence of libgit2, also
         run: |
-          BiocManager::install(c('gert', 'airway'))
+          BiocManager::install(c('gert', 'airway', 'MatrixGenerics', 'DelayedArray'))
           require('gert')
         shell: Rscript {0}
       - name: Check if gert can clone a package
