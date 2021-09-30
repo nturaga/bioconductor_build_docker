@@ -3,8 +3,27 @@ FROM bioconductor/bioconductor_docker:devel
 
 LABEL name="nturaga/bioconductor_build_docker" \
       maintainer="nturaga.bioc@gmail.com" \
-      version="3.14.1" \
+      version="3.14.2" \
       description="Bioconductor docker image for the linux build machine"
+
+RUN apt-get update \
+	## Install sklearn and pandas on python
+	&& pip3 install scipy \
+		numpy \
+		h5py \
+		mofapy \
+		mofapy2 \
+		tensorflow \
+		tensorflow_probability \
+		h5pyd \
+		nbconvert \
+		jupyter \
+		matplotlib \
+		phate \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+
+
 
 # Update apt-get
 RUN apt-get update \
