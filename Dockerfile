@@ -23,12 +23,12 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-
-
 # Update apt-get
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends apt-utils \
-	&& apt-get install -y --no-install-recommends \
+        && apt-get install -y --no-install-recommends \
+        emacs \
+        ess \
 	texlive \
 	texlive-latex-extra \
 	texlive-fonts-extra \
