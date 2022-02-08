@@ -4,7 +4,7 @@ Author: Nitesh Turaga
 
 [![Docker](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
 
-This image has the full installation of LaTeX.
+This image has the full installation of LaTeX and ESS (emacs speaks statistics) for R users.
 
 ## Availability
 
@@ -13,6 +13,20 @@ The image is available at `ghcr.io/nturaga/bioconductor_build_docker:master`
 ```
 docker pull ghcr.io/nturaga/bioconductor_build_docker:master
 ```
+
+## Usage - ESS
+
+You can now use Emacs and ESS to use R on this repository.
+
+	docker run -it \
+		-u rstudio \
+    	-v ${HOME}/R/bioconductor_docker/3.15:/usr/local/lib/R/host-site-library
+		ghcr.io/nturaga/bioconductor_build_docker:master bash
+		
+Once you login as rstudio user, use `emacs`, and then the below
+command should start up R.
+
+	M-x R <RET>
 
 ## Usage - with Docker Compose
 
@@ -33,7 +47,7 @@ as a system requirement, you can log in as root user and install the
 library.
 
 ```
-docker exec -it bioc-3.14 bash
+docker exec -it bioc-<devel-version> bash
 ```
 
 While installing the library, be sure to use 

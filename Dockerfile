@@ -43,3 +43,6 @@ RUN apt-get update \
 
 # Required packages, so these are latest no matter what
 RUN R -e 'BiocManager::install(c("BiocStyle", "devtools", "BiocCheck", "roxygen2", "testthat", "knitr"))'
+
+## comment this line if you don't want to set up your emacs like an R programmer
+ADD dot-emacs.el /root/.emacs
