@@ -1,9 +1,9 @@
 # This docker image has LaTeX to build the vignettes
-FROM bioconductor/bioconductor_docker:devel
+FROM bioconductor/bioconductor_docker:RELEASE_3_14
 
 LABEL name="nturaga/bioconductor_build_docker" \
       maintainer="nturaga.bioc@gmail.com" \
-      version="3.15.0" \
+      version="3.14.0" \
       description="Bioconductor docker image for the linux build machine"
 
 RUN apt-get update \
