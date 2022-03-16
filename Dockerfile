@@ -37,7 +37,9 @@ RUN apt-get update \
 	texi2html \
 	texinfo \
 	qpdf \
-	libhiredis-dev \
+        libhiredis-dev \
+        tmux \
+        openssh \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
