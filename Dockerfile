@@ -39,7 +39,7 @@ RUN apt-get update \
 	qpdf \
         libhiredis-dev \
         tmux \
-        openssh \
+        openssh-server \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
