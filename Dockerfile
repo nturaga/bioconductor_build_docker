@@ -1,5 +1,5 @@
 # This docker image has LaTeX to build the vignettes
-FROM bioconductor/bioconductor_docker:devel
+FROM bioconductor/bioconductor_docker:RELEASE_3_15
 
 LABEL name="nturaga/bioconductor_build_docker" \
       maintainer="nturaga.bioc@gmail.com" \
