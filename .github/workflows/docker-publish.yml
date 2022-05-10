@@ -16,6 +16,10 @@ on:
   pull_request:
     branches: [ master, RELEASE_3_15 ]
   workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'name of branch'
+        required: true
 
 env:
   # Use docker.io for Docker Hub if empty
