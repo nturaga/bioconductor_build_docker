@@ -2,7 +2,9 @@
 
 Author: Nitesh Turaga
 
-[![Docker](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
+**devel**: [![Docker Build and Publish on ghcr.io](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg?branch=master)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
+
+**RELEASE_3_15**: [![Docker Build and Publish on ghcr.io](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml/badge.svg?branch=RELEASE_3_15)](https://github.com/nturaga/bioconductor_build_docker/actions/workflows/docker-publish.yml)
 
 This image has the full installation of LaTeX and ESS (emacs speaks statistics) for R users.
 
